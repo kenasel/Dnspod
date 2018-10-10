@@ -1,4 +1,6 @@
 ## Dnspod
+[![fire](https://img.shields.io/badge/fire-0.1.3-green.svg)](https://github.com/google/python-fire)[![requests](https://img.shields.io/badge/requests-2.18.4-red.svg)](https://github.com/requests/requests)
+
 腾讯云域名解析服务dnspod命令行工具
 
 
