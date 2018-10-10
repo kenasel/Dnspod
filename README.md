@@ -19,16 +19,16 @@
 
 
 #### 获取某域名的所有记录
-`# python api.py get-all-records domain`
+`# python api.py get-all-records DOMAIN`
 
 
 
 #### 获取某域名的子域名所有记录信息
-`# python dnspod.py get-info-record domain sub_domain`
+`# python dnspod.py get-info-record DOMAIN SUB_DOMAIN`
 
 
 #### 通过IP查看某条记录的状态
-`# python dnspod.py get-record-status-by-ip IP domain sub_domain`
+`# python dnspod.py get-record-status-by-ip IP DOMAIN SUB_DOMAIN`
 
 
 #### 添加域名记录
