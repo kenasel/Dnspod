@@ -3,6 +3,8 @@ import requests
 import fire
 from setting import API,LOGIN_TOKEN
 
+
+
 class Dnspod(object):
     def __init__(self, LOGIN_TOKEN, API):
         self.dnspodapi = API
@@ -166,5 +168,5 @@ class Dnspod(object):
             return False
 
 if __name__ == '__main__':
-    fire.Fire(Dnspod('22715,bf07e776bae1b3238c654675c6a1c329'))
+    fire.Fire(Dnspod(LOGIN_TOKEN,API))
 
