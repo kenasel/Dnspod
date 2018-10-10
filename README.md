@@ -37,7 +37,7 @@
 `# python dnspod.py add-record IP RECORD_LINE STATUS DOMAIN SUB_DOMAIN`
 
 #### 修改域名记录
-`# python dnspod.py modify-record IP RECORD_ID RECORD_LINE_ID STATUS DOMAIN SUB_DOMAIN`
+`# python dnspod.py modify-record IP RECORD_LINE_ID STATUS DOMAIN SUB_DOMAIN`
 
 #### 修改域名记录状态
 `# python dnspod.py modify-record-status DOMAIN SUB_DOMAIN IP STATUS`

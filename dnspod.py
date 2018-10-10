@@ -111,28 +111,34 @@ class Dnspod(object):
             print('Get %s %s.%s record failed!'%(ip,sub_domain, domain))
             return False
 
-    def modify_record(self, ip,record_id,record_line_id,status,domain, sub_domain):
-        data = {
-            "login_token": self.dnspod_login_token,
-            "value": ip,
-            "record_id": record_id,
-            "record_line_id": record_line_id,
-            "record_type": 'A',
-            "status": status,
-            "domain": domain,
-            "sub_domain": sub_domain,
-            "format": 'json'
-        }
-        try:
-            request = requests.post(url=self.dnspodapi + 'Record.Modify', data=data)
-            res = json.loads(request.text)
-            if 'status' in res and res['status']['code'] == '1':
-                return True
-            else:
+    def modify_record(self, ip, record_line_id, status, domain, sub_domain):
+        record_id,old_record_line_id = self.get_record_by_ip(ip, domain, sub_domain)
+        if record_id:
+            data = {
+                "login_token": self.dnspod_login_token,
+                "value": ip,
+                "record_id": record_id,
+                "record_line_id": record_line_id,
+                "record_type": 'A',
+                "status": status,
+                "domain": domain,
+                "sub_domain": sub_domain,
+                "format": 'json'
+            }
+            try:
+                request = requests.post(url=self.dnspodapi + 'Record.Modify', data=data)
+                res = json.loads(request.text)
+                if 'status' in res and res['status']['code'] == '1':
+                    return True
+                else:
+                    return False
+            except  requests.exceptions.RequestException as e:
+                print(e)
                 return False
-        except  requests.exceptions.RequestException as e:
-            print(e)
+        else:
+            print('Get %s %s.%s record failed!'%(ip,sub_domain, domain))
             return False
+        
 
     def modify_record_status(self, domain, sub_domain, ip, status):
         record_id,record_line_id  = self.get_record_by_ip(ip, domain, sub_domain)
